@@ -16,7 +16,9 @@
 <meta property="og:title" content="CHOPHOUSE — Live Music · Creative Collective">
 <meta property="og:description" content="A living creative ecosystem in Boone, NC. Part venue, part village, part culture engine. Enter the village.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://spencera1125120.github.io/Chophouse/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://spencera1125120.github.io/Chophouse/og-image.png">
 <meta name="twitter:title" content="CHOPHOUSE — Live Music · Creative Collective">
 <meta name="twitter:description" content="A living creative ecosystem in Boone, NC. Part venue, part village, part culture engine.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,9 +157,14 @@ a{color:inherit}
 .btn.primary:active{box-shadow:0 1px 0 #2f7d52;transform:translateY(3px)}
 .btn.ghost{background:none;color:var(--ink-dim)}.btn.ghost:hover{color:var(--ink);background:rgba(255,255,255,.03)}
 .btn.sm{padding:8px 12px;font-size:.77rem;border-radius:10px}
+/* ---- keyboard focus ---- */
+:focus-visible{outline:2px solid var(--spring);outline-offset:2px;border-radius:4px}
+.field:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(61,220,132,.12)}
+.nav-btn:focus-visible{outline:2px solid var(--spring);outline-offset:-2px}
+.btn:focus-visible{outline:2px solid var(--spring);outline-offset:2px}
 .card{background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);
   box-shadow:var(--shadow-sm),inset 0 1px 0 rgba(182,255,46,.08);position:relative;
-  border-radius:var(--r);box-shadow:var(--shadow-sm)}
+  border-radius:var(--r)}
 /* desktop-only hover micro-interactions on interactive cards */
 @media(hover:hover) and (pointer:fine){
   .mission-card,.evcard,.venture,.tg-card,.home-stat{transition:transform .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease)}
@@ -651,7 +658,7 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
       <div class="welcome-ribbon" id="welcomeRibbon" style="display:none">
         <span class="wr-dot"></span>
         <span class="wr-text"><b>New here?</b> This is a living world — tap into the Village, take on missions, watch it grow.</span>
-        <button class="wr-x" id="welcomeClose" aria-label="Dismiss">✕</button>
+        <button class="wr-x" id="welcomeClose" aria-label="Dismiss welcome message" aria-label="Dismiss">✕</button>
       </div>
       <div class="home-hero">
         <div class="home-logo">
@@ -924,12 +931,12 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
 
   <!-- BOTTOM NAV -->
   <nav class="nav"><div class="nav-inner">
-    <button class="nav-btn on" data-view="home"><svg class="ic" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="lb">Home</span></button>
-    <button class="nav-btn" data-view="village"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21h18M5 21V11l7-5 7 5v10M10 21v-5h4v5"/></svg><span class="lb">Village</span></button>
-    <button class="nav-btn" data-view="events"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h16v16H4zM4 9h16M8 3v4M16 3v4"/></svg><span class="lb">Shows</span></button>
-    <button class="nav-btn" data-view="desk"><svg class="ic" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7"/></svg><span class="lb">Desk</span></button>
-    <button class="nav-btn" data-view="greenhouse"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg><span class="lb">Build</span></button>
-    <button class="nav-btn" data-view="impact"><svg class="ic" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="lb">Story</span></button>
+    <button class="nav-btn on" data-view="home" aria-label="Home"><svg class="ic" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="lb">Home</span></button>
+    <button class="nav-btn" data-view="village" aria-label="Village"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21h18M5 21V11l7-5 7 5v10M10 21v-5h4v5"/></svg><span class="lb">Village</span></button>
+    <button class="nav-btn" data-view="events" aria-label="Shows"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h16v16H4zM4 9h16M8 3v4M16 3v4"/></svg><span class="lb">Shows</span></button>
+    <button class="nav-btn" data-view="desk" aria-label="Desk"><svg class="ic" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7"/></svg><span class="lb">Desk</span></button>
+    <button class="nav-btn" data-view="greenhouse" aria-label="Build"><svg class="ic" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg><span class="lb">Build</span></button>
+    <button class="nav-btn" data-view="impact" aria-label="Story"><svg class="ic" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="lb">Story</span></button>
   </div></nav>
 </div>
 <div class="toast" id="toast"></div>
@@ -989,7 +996,7 @@ let S={
   desk:{items:[],tasks:[],contacts:[]}
 };
 async function load(){
-  try{const r=await window.storage.get(KEY);if(r&&r.value){const o=JSON.parse(r.value);
+  try{const r=await localStorage.getItem(KEY);if(r&&r.value){const o=JSON.parse(r.value);
     S=Object.assign(S,o);
     // deep-backfill nested objects so old saves missing sub-fields don't break
     S.res=Object.assign({gold:0,influence:0,knowledge:0,impact:0},o.res||{});
@@ -1000,7 +1007,7 @@ async function load(){
     for(const k of ['gold','influence','knowledge','impact']){const n=Number(S.res[k]);S.res[k]=Number.isFinite(n)?n:0;}
   }}catch(e){}
   if(!S.desk)S.desk={items:[],tasks:[],contacts:[]};if(!S.res)S.res={gold:0,influence:0,knowledge:0,impact:0};}
-let saveT;function save(){clearTimeout(saveT);saveT=setTimeout(async()=>{try{await window.storage.set(KEY,JSON.stringify(S));}catch(e){}},150);}
+let saveT;function save(){clearTimeout(saveT);saveT=setTimeout(async()=>{try{await localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}},150);}
 
 /* ---- resources header ---- */
 const RES=[{id:'gold',n:'Gold'},{id:'influence',n:'Influence'},{id:'knowledge',n:'Knowledge'},{id:'impact',n:'Impact'}];
