@@ -1027,7 +1027,7 @@ function grant(obj){
     if(res){res.classList.add('bump');setTimeout(()=>res.classList.remove('bump'),260);}
     if(pl&&v){pl.textContent=(v>0?'+':'')+v;pl.classList.add('show');setTimeout(()=>pl.classList.remove('show'),900);}
   });
-  save();
+  save();renderResources();
 }
 
 /* ---- view router ---- */
@@ -1038,6 +1038,8 @@ function showView(name){
   window.scrollTo({top:0,behavior:'smooth'});
   if(name==='home')renderHomeNext();
   if(name==='events')evRender();
+
+  if(v==='desk'){renderTasks();renderContacts();}
 }
 document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 function renderHomeNext(){
@@ -1100,10 +1102,11 @@ function ruleTriage(text){
 }
 function setAI(on){const b=$('aiBadge');b.classList.toggle('live',on);$('aiText').textContent=on?'AI live':'rules';}
 
-$('processBtn').onclick=async()=>{
+$('processBtn').onclick=()=>{
   const text=$('raw').value.trim();if(!text){toast('Paste something to process first.');return;}
   const b=$('processBtn');b.disabled=true;b.innerHTML='<span class="spinner"></span> Reading…';
-  const res=await triage(text);
+  try{
+  const res=ruleTriage(text);
   b.disabled=false;b.textContent='Process';
   const item={id:uid(),raw:text,...res,ts:Date.now()};
   S.desk.items.unshift(item);
@@ -1113,6 +1116,7 @@ $('processBtn').onclick=async()=>{
   grant(REWARD_OF[res.category]||{});
   save();$('raw').value='';renderResults();renderTasks();renderContacts();
   toast('Processed → routed to '+(DISTRICT_OF[res.category]||'Town Hall'));
+  }catch(e){$("processBtn").disabled=false;$("processBtn").textContent="Process";toast("Error processing — please try again.",3000);}
 };
 $('clearBtn').onclick=()=>$('raw').value='';
 
