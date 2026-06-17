@@ -1039,7 +1039,7 @@ function showView(name){
   if(name==='home')renderHomeNext();
   if(name==='events')evRender();
 
-  if(v==='desk'){renderTasks();renderContacts();}
+  if(name==='desk'){renderTasks();renderContacts();}
 }
 document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 function renderHomeNext(){
@@ -1645,6 +1645,7 @@ showView=function(name){_show2(name);
   if(name==='events')evRender();
   if(name==='greenhouse'){mRender();ghRender();}
   if(name==='impact'){impactRender();forestStart();}else{forestStop();}
+  if(name==='village'){vStart();}else{vStop();}
 };
 window.addEventListener('resize',()=>{if(fRunning)forestResize();});
 
