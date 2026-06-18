@@ -627,6 +627,98 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
 .chip,.stage-chip,.bstat,.tagchip{box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
 /* deep-link action buttons → mini game chips */
 .vtask .vact,.act{font-family:"Space Grotesk",sans-serif;font-weight:600}
+
+/* ============================================================
+   EXPANSION — Village Edit Mode, Objective, Desktop 2-col, Story Reveal
+   ============================================================ */
+
+/* ---- VILLAGE EDIT MODE ---- */
+.village-toolbar{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.vt-btn{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:8px 13px;font-size:.78rem;font-weight:700;color:var(--ink-dim);cursor:pointer;
+  font-family:"Space Grotesk",sans-serif;letter-spacing:.02em;display:flex;align-items:center;gap:5px;
+  transition:all .15s var(--ease);touch-action:manipulation}
+.vt-btn:hover{color:var(--ink);border-color:rgba(255,255,255,.25)}
+.vt-btn.active{background:rgba(182,255,46,.12);border-color:var(--spring);color:var(--spring)}
+.vt-btn.danger{color:var(--impact);border-color:rgba(255,61,242,.3)}
+.vt-btn.danger:hover{background:rgba(255,61,242,.1)}
+.edit-badge{display:inline-block;padding:2px 7px;border-radius:6px;background:rgba(182,255,46,.15);
+  color:var(--spring);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  font-family:"Space Grotesk",sans-serif;margin-left:6px}
+#vcanvas.edit-mode{cursor:crosshair}
+#vcanvas.dragging{cursor:grabbing!important}
+
+/* ---- CURRENT OBJECTIVE BANNER ---- */
+.obj-banner{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;
+  background:linear-gradient(135deg,rgba(182,255,46,.07),rgba(35,247,221,.04));
+  border:1px solid rgba(182,255,46,.2);border-radius:var(--r);margin-bottom:14px;
+  position:relative;overflow:hidden}
+.obj-banner::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--spring),var(--influence))}
+.obj-icon{width:28px;height:28px;background:rgba(182,255,46,.15);border-radius:8px;
+  display:grid;place-items:center;flex:0 0 auto;font-size:.9rem}
+.obj-body{min-width:0;flex:1}
+.obj-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--spring);
+  font-weight:700;font-family:"Space Grotesk",sans-serif}
+.obj-text{font-size:.88rem;color:var(--ink);margin-top:2px;line-height:1.4;font-weight:500}
+.obj-sub{font-size:.74rem;color:var(--ink-dim);margin-top:2px}
+.obj-prog{display:flex;gap:4px;margin-top:7px}
+.obj-pip{height:3px;flex:1;border-radius:2px;background:var(--line)}
+.obj-pip.done{background:var(--spring)}
+.obj-pip.active{background:rgba(182,255,46,.5)}
+
+/* ---- MISSION COMPLETE ---- */
+.mc-complete-btn{margin-top:10px;width:100%;background:rgba(182,255,46,.1);border:1px solid rgba(182,255,46,.3);
+  color:var(--spring);border-radius:var(--r-sm);padding:9px;font-size:.8rem;font-weight:700;
+  cursor:pointer;font-family:"Space Grotesk",sans-serif;letter-spacing:.03em;transition:all .15s;
+  touch-action:manipulation}
+.mc-complete-btn:hover{background:rgba(182,255,46,.2);border-color:var(--spring)}
+.mc-complete-btn:disabled{opacity:.4;cursor:not-allowed}
+.mc-status.done{background:rgba(61,220,132,.15);color:var(--leaf);border-radius:5px;padding:2px 8px;font-size:.72rem}
+
+/* ---- SHOW DETAIL ---- */
+.evcard{cursor:pointer}
+.evcard .ev-detail{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.evcard.expanded .ev-detail{display:block}
+.evcard.expanded{border-color:rgba(255,61,242,.35)}
+.ev-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.ev-detail-item{background:var(--surface);border-radius:8px;padding:10px 12px}
+.ev-detail-label{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-dim);
+  font-weight:700;font-family:"Space Grotesk",sans-serif}
+.ev-detail-val{font-size:.88rem;color:var(--ink);margin-top:2px;font-weight:500}
+.ev-lineup{margin-top:8px}
+.ev-lineup-title{font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brass);
+  font-weight:700;margin-bottom:6px;font-family:"Space Grotesk",sans-serif}
+.ev-lineup-artist{display:flex;align-items:center;gap:8px;padding:7px 0;
+  border-bottom:1px solid var(--line-soft);font-size:.84rem}
+.ev-lineup-artist:last-child{border-bottom:none}
+.ev-lineup-role{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);
+  font-family:"Space Grotesk",sans-serif;margin-left:auto}
+
+/* ---- STORY SCROLL REVEAL ---- */
+.story-block{opacity:0;transform:translateY(18px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.story-block.revealed{opacity:1;transform:none}
+
+/* ---- DESKTOP 2-COL ---- */
+@media(min-width:900px){
+  #bt-missions.on{display:grid;grid-template-columns:220px 1fr;gap:0 18px;align-items:start}
+  .mission-filters{grid-column:1;display:flex!important;flex-direction:column;gap:6px;
+    position:sticky;top:calc(var(--nav-h) + 14px);padding-top:0}
+  .mission-filters .mf-chip{width:100%;text-align:left;justify-content:flex-start;padding:9px 12px}
+  #missionList{grid-column:2}
+  #evList{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  .want-in-block{grid-column:1/-1}
+}
+
+/* ---- POLISH ---- */
+.want-in-block{text-align:center;padding:24px 20px;
+  background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(35,247,221,.04));
+  border:1px dashed rgba(168,85,247,.3);border-radius:var(--r);margin-top:6px}
+.want-in-title{font-family:"Anton",sans-serif;font-size:1.4rem;color:var(--violet);
+  letter-spacing:.02em;margin-bottom:4px}
+.want-in-sub{font-size:.82rem;color:var(--ink-dim);margin-bottom:12px}
+.home-next:hover{border-color:rgba(255,200,87,.3)!important}
+
 </style>
 </head>
 <body>
@@ -677,6 +769,16 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
         <span class="wr-dot"></span>
         <span class="wr-text"><b>New here?</b> This is a living world — tap into the Village, take on missions, watch it grow.</span>
         <button class="wr-x" id="welcomeClose" aria-label="Dismiss welcome message" aria-label="Dismiss">✕</button>
+      </div>
+      <!-- CURRENT OBJECTIVE BANNER -->
+      <div class="obj-banner" id="objBanner" style="display:none">
+        <div class="obj-icon" id="objIcon">⚡</div>
+        <div class="obj-body">
+          <div class="obj-label">Current Objective</div>
+          <div class="obj-text" id="objText">Loading…</div>
+          <div class="obj-sub" id="objSub"></div>
+          <div class="obj-prog" id="objProg"></div>
+        </div>
       </div>
       <div class="home-hero">
         <div class="home-logo">
@@ -787,7 +889,27 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
         <p>Tap to build. Drag to explore.</p>
       </div>
       <div class="era-banner card" id="eraBanner"></div>
-      <div class="village-stage" id="villageStage">
+      
+  <!-- VILLAGE TOOLBAR -->
+  <div class="village-toolbar" id="villageToolbar">
+    <button class="vt-btn" id="editModeBtn" onclick="vToggleEdit()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Edit Layout
+    </button>
+    <button class="vt-btn danger" id="resetLayoutBtn" onclick="vResetLayout()" style="display:none">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+      Reset
+    </button>
+    <span class="edit-badge" id="editBadge" style="display:none">EDIT MODE</span>
+    <div class="obj-banner" id="objBannerV" style="display:none;flex:1;margin:0;padding:9px 12px">
+      <div class="obj-icon" style="width:22px;height:22px;font-size:.75rem" id="objIconV">⚡</div>
+      <div class="obj-body">
+        <div class="obj-label" style="font-size:.52rem">Next Step</div>
+        <div class="obj-text" style="font-size:.8rem" id="objTextV">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="village-stage" id="villageStage">
         <canvas id="vcanvas"></canvas>
         <div class="vhint" id="vhint">Drag to pan · Tap a building</div>
       </div>
@@ -805,7 +927,7 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
         <button class="ev-tab" data-ev="past">Past</button>
       </div>
       <div id="evList"></div>
-      <div class="ev-cta card">
+      <div class="ev-cta card want-in-block">
         <div class="ev-cta-h">Want in?</div>
         <p>Play a set, vend, or sponsor a night.</p>
         <div class="ev-cta-row">
@@ -875,7 +997,8 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
         <p>How we got here. Where we're going.</p>
       </div>
 
-      <!-- ORIGIN -->
+      <div class="story-blocks-grid">
+  <!-- ORIGIN -->
       <div class="story-block card">
         <div class="sb-eyebrow">The Origin</div>
         <div class="sb-title">Boone, NC · 2023</div>
@@ -1592,7 +1715,7 @@ function ghRender(){
       <div class="vtop"><span class="vname">${esc(v.name)}</span><span class="stage-chip">${GH_STAGE_LABEL[v.stage]}</span></div>
       <div class="vdesc">${esc(v.desc||'')}</div>
       <div class="stage-track">${track}</div>
-      <div class="stage-labels">${labels}</div>
+      <div class="stage-labels" >${labels}</div>
       ${gatesHtml}
       <div class="vacts">${actHtml}<button class="btn sm ghost" data-ghdel="${v.id}">Remove</button></div>
     </div>`;
@@ -1701,6 +1824,509 @@ document.querySelectorAll('.ev-tab').forEach(t=>t.onclick=()=>{
   document.querySelectorAll('.ev-tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
   evFilter=t.dataset.ev;evRender();
 });
+
+
+
+/* ============================================================
+   EXPANSION MODULE — all new features
+   ============================================================ */
+
+/* ─── VILLAGE: GRASS LAYER ─── */
+/* Called after vGround() in the draw loop */
+function vGrassLayer(){
+  if(!vx||!VDISTRICTS)return;
+  const t=performance.now();
+  // Occupied cells
+  const occupied=new Set(VDISTRICTS.map(d=>(vEditMode?vGetGx(d):d.gx)+','+( vEditMode?vGetGy(d):d.gy)));
+  // Determine grid bounds
+  let minGx=99,maxGx=-99,minGy=99,maxGy=-99;
+  VDISTRICTS.forEach(d=>{
+    const gx=vEditMode?vGetGx(d):d.gx, gy=vEditMode?vGetGy(d):d.gy;
+    if(gx<minGx)minGx=gx;if(gx>maxGx)maxGx=gx;
+    if(gy<minGy)minGy=gy;if(gy>maxGy)maxGy=gy;
+  });
+  // Draw grass tufts on empty tiles near buildings
+  for(let gx=minGx-1;gx<=maxGx+1;gx++){
+    for(let gy=minGy-1;gy<=maxGy+1;gy++){
+      if(occupied.has(gx+','+gy))continue;
+      const p=viso(gx,gy);
+      const sx=p.x+vox, sy=p.y+voy;
+      // Subtle tile tint — slight green on near-building tiles
+      const nearBuilding=VDISTRICTS.some(d=>{
+        const dx=vEditMode?vGetGx(d):d.gx, dy=vEditMode?vGetGy(d):d.gy;
+        return Math.abs(dx-gx)<=1&&Math.abs(dy-gy)<=1;
+      });
+      if(nearBuilding){
+        vx.save();
+        vx.globalAlpha=0.08;
+        vDiamond(sx,sy,vTW*0.96,vTH*0.96,'rgba(61,180,60,.9)',null);
+        vx.restore();
+      }
+      // Draw 2-4 tiny grass tufts per tile (seeded by position)
+      const seed=(gx*7+gy*13)&0xFFFF;
+      const tufts=2+(seed%3);
+      for(let i=0;i<tufts;i++){
+        const ox=(((seed*17+i*31)%100)/100-.5)*vTW*.35;
+        const oy=(((seed*23+i*37)%100)/100-.5)*vTH*.3;
+        const ph=seed*0.04+i*1.2+t*0.0008;
+        const sway=Math.sin(ph)*1.5;
+        const h=3+((seed+i*11)%5);
+        const alpha=0.18+((seed%5)*0.03);
+        vx.save();
+        vx.globalAlpha=alpha;
+        vx.strokeStyle='#4a7c3f';
+        vx.lineWidth=1;
+        vx.beginPath();
+        vx.moveTo(sx+ox,sy+oy);
+        vx.lineTo(sx+ox+sway,sy+oy-h);
+        vx.stroke();
+        vx.restore();
+      }
+    }
+  }
+  // Draw faint paths between adjacent active buildings
+  vx.save();
+  vx.globalAlpha=0.06;
+  vx.strokeStyle='rgba(200,180,120,.8)';
+  vx.lineWidth=vTW*.18;
+  vx.lineCap='round';
+  const activeD=VDISTRICTS.filter(d=>vState(d).active||vState(d).built);
+  for(let i=0;i<activeD.length;i++){
+    for(let j=i+1;j<activeD.length;j++){
+      const a=activeD[i], b=activeD[j];
+      const agx=vEditMode?vGetGx(a):a.gx, agy=vEditMode?vGetGy(a):a.gy;
+      const bgx=vEditMode?vGetGx(b):b.gx, bgy=vEditMode?vGetGy(b):b.gy;
+      if(Math.hypot(agx-bgx,agy-bgy)<2.5){
+        const pa=viso(agx,agy), pb=viso(bgx,bgy);
+        vx.beginPath();
+        vx.moveTo(pa.x+vox,pa.y+voy);
+        vx.lineTo(pb.x+vox,pb.y+voy);
+        vx.stroke();
+      }
+    }
+  }
+  vx.restore();
+}
+
+/* ─── VILLAGE: EDIT MODE OVERLAY ─── */
+function vEditOverlay(){
+  if(!vEditMode||!vx)return;
+  // Draw hover cell highlight
+  if(vHoverCell){
+    const p=viso(vHoverCell.gx,vHoverCell.gy);
+    const sx=p.x+vox, sy=p.y+voy;
+    vx.save();
+    vx.globalAlpha=0.4;
+    vDiamond(sx,sy,vTW*.96,vTH*.96,vDragOK?'rgba(182,255,46,.35)':'rgba(255,61,242,.35)',
+      vDragOK?'#B6FF2E':'#FF3DF2');
+    vx.restore();
+    // Drag ghost: draw dragged building at hover position
+    if(vDragBuilding){
+      const d=vDragBuilding.d;
+      vx.save();
+      vx.globalAlpha=0.55;
+      const tmp_gx=d.gx, tmp_gy=d.gy;
+      d.gx=vHoverCell.gx; d.gy=vHoverCell.gy;
+      if(typeof vDrawB==='function')vDrawB(d);
+      d.gx=tmp_gx; d.gy=tmp_gy;
+      vx.restore();
+    }
+  }
+  // Draw dashed border around all buildings in edit mode
+  vx.save();
+  vx.globalAlpha=0.25;
+  vx.strokeStyle='#B6FF2E';
+  vx.lineWidth=1.5;
+  vx.setLineDash([4,4]);
+  VDISTRICTS.forEach(d=>{
+    const gx=vGetGx(d), gy=vGetGy(d);
+    const p=viso(gx,gy);
+    const sx=p.x+vox, sy=p.y+voy;
+    vDiamond(sx,sy,vTW*.92,vTH*.92,null,'#B6FF2E');
+  });
+  vx.setLineDash([]);
+  vx.restore();
+}
+
+/* ─── VILLAGE: EDIT MODE SETUP ─── */
+let vEditMode=false;
+let vDragBuilding=null;
+let vHoverCell=null;
+let vDragOK=false;
+let _editHandlersInit=false;
+
+function vToggleEdit(){
+  vEditMode=!vEditMode;
+  const vc=document.getElementById('vcanvas');
+  const btn=document.getElementById('editModeBtn');
+  const badge=document.getElementById('editBadge');
+  const resetBtn=document.getElementById('resetLayoutBtn');
+  if(vc)vc.classList.toggle('edit-mode',vEditMode);
+  if(btn)btn.classList.toggle('active',vEditMode);
+  if(badge)badge.style.display=vEditMode?'':'none';
+  if(resetBtn)resetBtn.style.display=vEditMode?'':'none';
+  if(!vEditMode){vDragBuilding=null;vHoverCell=null;}
+  toast(vEditMode?'Edit mode ON — drag buildings to reposition':'Layout saved');
+}
+
+function vResetLayout(){
+  if(!confirm('Reset building positions to default?'))return;
+  VDISTRICTS.forEach(d=>{delete d._gx;delete d._gy;});
+  if(typeof S!=='undefined'){S.village=S.village||{};S.village.layout={};save();}
+  vSeed();
+  toast('Layout reset');
+}
+
+function vGetGx(d){return d._gx!==undefined?d._gx:d.gx;}
+function vGetGy(d){return d._gy!==undefined?d._gy:d.gy;}
+
+function vCanvasToGrid(cx,cy){
+  const vc=document.getElementById('vcanvas');
+  const rect=vc.getBoundingClientRect();
+  const px=(cx-rect.left)-(rect.width/2)+vcam.x;
+  const py=(cy-rect.top)-(rect.height/2)+vcam.y;
+  const gx=Math.round((px/(vTW*0.5)+py/(vTH*0.5))/2);
+  const gy=Math.round((py/(vTH*0.5)-px/(vTW*0.5))/2);
+  return{gx,gy};
+}
+
+function vIsCellFree(gx,gy,excludeId){
+  return!VDISTRICTS.some(d=>d.id!==excludeId&&vGetGx(d)===gx&&vGetGy(d)===gy);
+}
+
+function vInitEditHandlers(){
+  if(_editHandlersInit)return;
+  _editHandlersInit=true;
+  const vc=document.getElementById('vcanvas');
+  if(!vc)return;
+  function onDown(e){
+    if(!vEditMode)return;
+    const cx=(e.touches?e.touches[0].clientX:e.clientX);
+    const cy=(e.touches?e.touches[0].clientY:e.clientY);
+    const cell=vCanvasToGrid(cx,cy);
+    const found=VDISTRICTS.find(d=>vGetGx(d)===cell.gx&&vGetGy(d)===cell.gy);
+    if(found){vDragBuilding={d:found};vc.classList.add('dragging');e.preventDefault();}
+  }
+  function onMove(e){
+    if(!vEditMode)return;
+    const cx=(e.touches?e.touches[0].clientX:e.clientX);
+    const cy=(e.touches?e.touches[0].clientY:e.clientY);
+    const cell=vCanvasToGrid(cx,cy);
+    vHoverCell=cell;
+    if(vDragBuilding)vDragOK=vIsCellFree(cell.gx,cell.gy,vDragBuilding.d.id);
+    e.preventDefault();
+  }
+  function onUp(e){
+    if(!vEditMode)return;
+    vc.classList.remove('dragging');
+    if(vDragBuilding&&vHoverCell&&vDragOK){
+      const d=vDragBuilding.d;
+      d._gx=vHoverCell.gx;d._gy=vHoverCell.gy;
+      if(typeof S!=='undefined'){
+        S.village=S.village||{};S.village.layout=S.village.layout||{};
+        S.village.layout[d.id]={gx:d._gx,gy:d._gy};
+        save();
+      }
+      toast(d.id+' moved');
+      vSeed();
+    }
+    vDragBuilding=null;vHoverCell=null;
+  }
+  vc.addEventListener('pointerdown',onDown,{passive:false});
+  vc.addEventListener('pointermove',onMove,{passive:false});
+  vc.addEventListener('pointerup',onUp);
+  vc.addEventListener('touchstart',onDown,{passive:false});
+  vc.addEventListener('touchmove',onMove,{passive:false});
+  vc.addEventListener('touchend',onUp);
+}
+
+function vRestoreLayout(){
+  const layout=(typeof S!=='undefined'&&S.village&&S.village.layout)?S.village.layout:{};
+  VDISTRICTS.forEach(d=>{
+    if(layout[d.id]){d._gx=layout[d.id].gx;d._gy=layout[d.id].gy;}
+  });
+}
+
+/* ─── OBJECTIVE TRACKER ─── */
+function renderObjective(){
+  const banners=['objBanner','objBannerV'];
+  // Find first incomplete quest step
+  const quest=VQUEST||[];
+  let step=null, stepIdx=0, totalSteps=quest.length;
+  const done=(typeof S!=='undefined'&&S.village&&S.village.questDone)||{};
+  for(let i=0;i<quest.length;i++){
+    const q=quest[i];
+    const allTasksDone=q.tasks&&q.tasks.every(t=>done[t.id]);
+    if(!allTasksDone){step=q;stepIdx=i;break;}
+  }
+  banners.forEach(bid=>{
+    const b=document.getElementById(bid);
+    if(!b)return;
+    if(!step){b.style.display='none';return;}
+    b.style.display='flex';
+    // Find first incomplete task
+    const nextTask=step.tasks&&step.tasks.find(t=>!done[t.id]);
+    const completedCount=step.tasks?step.tasks.filter(t=>done[t.id]).length:0;
+    const totalTasks=step.tasks?step.tasks.length:1;
+    // Update text
+    const iconEl=b.querySelector('[id^="objIcon"]');
+    const textEl=b.querySelector('[id^="objText"]');
+    const subEl=b.querySelector('[id^="objSub"]');
+    const progEl=b.querySelector('[id^="objProg"]');
+    if(iconEl)iconEl.textContent=['🔍','🎪','📣','💰','🔄'][stepIdx]||'⚡';
+    if(textEl)textEl.textContent=nextTask?nextTask.label:step.title+' complete';
+    if(subEl)subEl.textContent=step.title+' · step '+(stepIdx+1)+'/'+totalSteps;
+    if(progEl){
+      progEl.innerHTML=step.tasks.map((t,i)=>`<div class="obj-pip ${done[t.id]?'done':i===completedCount?'active':''}"></div>`).join('');
+    }
+  });
+}
+
+/* ─── MISSION COMPLETE ─── */
+function completeMission(id){
+  if(typeof S==='undefined')return;
+  S.missions=S.missions||{};
+  if(S.missions[id]==='done')return;
+  S.missions[id]='done';
+  // Find mission to get rewards
+  const m=MISSIONS&&MISSIONS.find(m=>m.id===id);
+  if(m&&m.r){grant(m.r);}
+  save();
+  mRender();
+  renderObjective();
+  toast('Mission complete! Resources granted.');
+}
+
+/* ─── QUEST TASK COMPLETE ─── */
+function completeQuestTask(taskId){
+  if(typeof S==='undefined')return;
+  S.village=S.village||{};
+  S.village.questDone=S.village.questDone||{};
+  if(S.village.questDone[taskId])return;
+  S.village.questDone[taskId]=true;
+  // Grant task rewards
+  const allQuests=(VQUEST||[]).flatMap(q=>q.tasks||[]);
+  const task=allQuests.find(t=>t.id===taskId);
+  if(task&&task.r)grant(task.r);
+  save();
+  renderObjective();
+  toast('Task done!');
+}
+
+/* ─── SHOW DETAIL EXPAND ─── */
+function evToggle(e,showId){
+  e.stopPropagation();
+  const cards=[...document.querySelectorAll('.evcard')];
+  cards.forEach(c=>{
+    if(c.dataset.showid===showId){
+      c.classList.toggle('expanded');
+    } else {
+      c.classList.remove('expanded');
+    }
+  });
+}
+
+/* ─── STORY SCROLL REVEAL ─── */
+function initStoryReveal(){
+  const blocks=document.querySelectorAll('.story-block');
+  if(!blocks.length)return;
+  // Immediately reveal blocks that are in view
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('revealed');
+        obs.unobserve(en.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  blocks.forEach((b,i)=>{
+    // Stagger the transition delay
+    b.style.transitionDelay=(i*0.08)+'s';
+    obs.observe(b);
+  });
+}
+
+/* ─── BOOT HOOKS ─── */
+/* Called once after app unlocks and loads */
+function initExpansion(){
+  // Restore village layout from saved state
+  if(typeof VDISTRICTS!=='undefined')vRestoreLayout();
+  // Init village edit handlers
+  vInitEditHandlers();
+  // Render objective banner
+  renderObjective();
+  // Init story scroll reveal
+  initStoryReveal();
+}
+
+/* Hook into app navigation to update objective on view change */
+const _origShowView=showView;
+showView=function(name){
+  _origShowView(name);
+  if(name==='village'){vRestoreLayout();vInitEditHandlers();}
+  if(name==='impact'){setTimeout(initStoryReveal,100);}
+  renderObjective();
+};
+
+/* ─── ENHANCED CRITTER SYSTEM (replaces flat blobs with butterflies/birds) ─── */
+/* vDrawW is already defined and draws blobs. 
+   We override it to draw more interesting critters. */
+const _origDrawW=vDrawW;
+function vDrawW(w){
+  // Determine critter type from col
+  const t=performance.now()*0.001;
+  const bob=Math.sin(w.ph+t)*3;
+  const p=viso(w.gx,w.gy);
+  const sx=p.x+vox+(w.tx!==undefined?(w.tx-w.gx)*vTW*.3:0);
+  const sy=p.y+voy+(w.ty!==undefined?(w.ty-w.gy)*vTH*.3:0)-bob-8;
+  const a=Math.sin(w.ph+t*2.5)*0.7+0.9; // wing flap
+  vx.save();
+  vx.globalAlpha=0.75;
+  // Body
+  vx.fillStyle=w.col||'#B6FF2E';
+  vx.beginPath();
+  vx.ellipse(sx,sy,2,3,0,0,Math.PI*2);
+  vx.fill();
+  // Wings
+  vx.globalAlpha=0.45;
+  vx.beginPath();
+  vx.ellipse(sx-5*a,sy-1,4*a,2,Math.PI*0.15,0,Math.PI*2);
+  vx.fill();
+  vx.beginPath();
+  vx.ellipse(sx+5*a,sy-1,4*a,2,-Math.PI*0.15,0,Math.PI*2);
+  vx.fill();
+  vx.restore();
+}
+
+/* ─── FIREFLIES ─── */
+let vFireflies=[];
+function vSeedFireflies(){
+  const count=Math.min(8+Math.floor((typeof S!=='undefined'?(S.res?Object.values(S.res).reduce((a,b)=>a+b,0):0):0)/20),25);
+  vFireflies=Array.from({length:count},(_,i)=>({
+    gx:(Math.random()-.5)*8,gy:(Math.random()-.5)*6,
+    ph:Math.random()*Math.PI*2,
+    spd:.3+Math.random()*.4,
+    col:['#B6FF2E','#23F7DD','#FFC857','#FF3DF2'][i%4]
+  }));
+}
+
+function vDrawFireflies(){
+  if(!vFireflies.length)vSeedFireflies();
+  const t=performance.now()*0.001;
+  vFireflies.forEach(f=>{
+    f.ph+=f.spd*0.016;
+    f.gx+=Math.sin(f.ph*0.7)*0.008;
+    f.gy+=Math.cos(f.ph*0.5)*0.006;
+    const p=viso(f.gx,f.gy);
+    const sx=p.x+vox, sy=p.y+voy-12-Math.abs(Math.sin(f.ph))*20;
+    const blink=Math.max(0,Math.sin(f.ph*3));
+    if(blink<0.1)return;
+    vx.save();
+    vx.globalAlpha=blink*0.7;
+    vx.fillStyle=f.col;
+    vx.shadowColor=f.col;
+    vx.shadowBlur=6*blink;
+    vx.beginPath();
+    vx.arc(sx,sy,1.5,0,Math.PI*2);
+    vx.fill();
+    vx.restore();
+  });
+}
+
+/* Patch vFrame to include fireflies (called via the existing vGrassLayer mechanism) */
+const _origGrassLayer=vGrassLayer;
+vGrassLayer=function(){_origGrassLayer&&_origGrassLayer();vDrawFireflies();};
+
+/* ─── ENHANCED evRender to add expand/detail ─── */
+const _origEvRender=evRender;
+evRender=function(){
+  _origEvRender();
+  // After render, add onclick expand to each evcard
+  const cards=[...document.querySelectorAll('.evcard')];
+  cards.forEach((card,i)=>{
+    // Set show id
+    const nameEl=card.querySelector('.ev-name');
+    const showId='show_'+i;
+    card.dataset.showid=showId;
+    // Add expand detail section if not already there
+    if(!card.querySelector('.ev-detail')){
+      const actsDiv=card.querySelector('.ev-actions');
+      const evData=S&&S.events&&S.events[i];
+      const artistsHTML=(evData&&evData.artists&&Array.isArray(evData.artists))?
+        evData.artists.map((a,ai)=>`<div class="ev-lineup-artist">
+          <span>${esc(typeof a==='string'?a:a.name||a)}</span>
+          <span class="ev-lineup-role">${ai===0?'Headliner':'Support'}</span>
+        </div>`).join(''):
+        '<div class="ev-lineup-artist"><span>Lineup forming…</span></div>';
+      const detailDiv=document.createElement('div');
+      detailDiv.className='ev-detail';
+      detailDiv.innerHTML=`
+        <div class="ev-detail-grid">
+          <div class="ev-detail-item"><div class="ev-detail-label">Venue</div><div class="ev-detail-val">${evData&&evData.loc?esc(evData.loc):'TBD'}</div></div>
+          <div class="ev-detail-item"><div class="ev-detail-label">Doors</div><div class="ev-detail-val">${evData&&evData.time?esc(evData.time):'TBD'}</div></div>
+        </div>
+        <div class="ev-lineup"><div class="ev-lineup-title">Lineup</div>${artistsHTML}</div>`;
+      if(actsDiv)card.insertBefore(detailDiv,actsDiv);
+      else card.appendChild(detailDiv);
+    }
+    // Tap header to expand
+    card.addEventListener('click',function(e){
+      if(e.target.closest('a')||e.target.closest('button'))return;
+      card.classList.toggle('expanded');
+    },{once:false});
+  });
+};
+
+/* ─── ENHANCED mRender to add Complete button ─── */
+const _origMRender=mRender;
+mRender=function(){
+  _origMRender();
+  // Add "Mark complete" button to open missions
+  const cards=[...document.querySelectorAll('.mission-card')];
+  cards.forEach(card=>{
+    const statusEl=card.querySelector('.mc-status');
+    if(!statusEl||statusEl.classList.contains('done'))return;
+    // Get mission id from the card's action button data
+    const actionBtn=card.querySelector('a.btn,button.btn');
+    if(!actionBtn)return;
+    const idMatch=card.innerHTML.match(/data-mid="([^"]+)"/);
+    // If no id encoded yet, try to find by title
+    if(card.querySelector('.mc-complete-btn'))return;
+    const btn=document.createElement('button');
+    btn.className='mc-complete-btn';
+    btn.textContent='✓ Mark Complete';
+    // Store the mission id; we'll encode it when mRender rewrites with ids
+    btn.onclick=function(){
+      // Get sibling text for title matching
+      const titleEl=card.querySelector('.mc-title');
+      const title=titleEl?titleEl.textContent:'';
+      const m=MISSIONS&&MISSIONS.find(x=>x.title===title);
+      if(m)completeMission(m.id);
+    };
+    card.appendChild(btn);
+  });
+};
+
+/* ─── FINAL BOOT ─── */
+/* Hook into the app unlock/load sequence */
+const _origPaint=window._paintHook||null;
+// We patch the unlock flow: after appRoot shows, call initExpansion
+const _appRoot=document.getElementById('appRoot');
+const _appObserver=new MutationObserver((muts)=>{
+  muts.forEach(m=>{
+    if(m.type==='attributes'&&m.attributeName==='style'){
+      if(_appRoot.style.display!=='none'&&_appRoot.style.display!==''){
+        setTimeout(initExpansion,400);
+        _appObserver.disconnect();
+      }
+    }
+  });
+});
+_appObserver.observe(_appRoot,{attributes:true,attributeFilter:['style']});
+
+/* Also hook into renderResources to update objective */
+const _origRenderRes=renderResources;
+renderResources=function(){_origRenderRes();renderObjective();};
 
 </script>
 </body>
