@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>CHOPHOUSE — Live Music · Creative Collective · Boone NC</title>
 <meta name="description" content="ChopHouse is an independent live-music venue and creative collective in Boone, NC — and a living creative ecosystem. Part venue, part village, part culture engine.">
 <meta name="theme-color" content="#07080D">
@@ -48,7 +51,7 @@
   --ease:cubic-bezier(.4,0,.2,1); --spring-ease:cubic-bezier(.34,1.3,.5,1);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{
   font-family:"Inter",system-ui,sans-serif;color:var(--ink);min-height:100vh;min-height:100dvh;
   background:
@@ -78,7 +81,7 @@ a{color:inherit}
 }
 
 /* ---- top: identity + living resources ---- */
-.topbar{position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);
+.topbar{position:sticky;top:0;z-index:30;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   background:linear-gradient(180deg, rgba(7,8,13,.95), rgba(7,8,13,.78));
   border-bottom:1px solid var(--line);padding:10px clamp(14px,3.5vw,24px) 11px;
   padding-top:calc(10px + env(safe-area-inset-top,0px))}
@@ -127,7 +130,7 @@ a{color:inherit}
 /* ---- bottom nav ---- */
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:40;height:calc(var(--nav-h) + env(safe-area-inset-bottom,0px));
   padding-bottom:env(safe-area-inset-bottom,0px);
-  background:linear-gradient(0deg, rgba(7,8,13,.99), rgba(11,13,20,.90));backdrop-filter:blur(16px);
+  background:linear-gradient(0deg, rgba(7,8,13,.99), rgba(11,13,20,.90));-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
   border-top:1px solid var(--line);display:flex;justify-content:center}
 .nav-inner{max-width:840px;width:100%;display:grid;grid-template-columns:repeat(6,1fr)}
 .nav-btn{background:none;border:none;color:var(--ink-faint);cursor:pointer;display:flex;flex-direction:column;
@@ -269,7 +272,7 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
 @keyframes spin{to{transform:rotate(360deg)}}
 .toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + 14px);transform:translate(-50%,160%);z-index:60;
   pointer-events:none;white-space:nowrap;
-  background:rgba(7,8,13,.96);backdrop-filter:blur(12px);border:1px solid rgba(182,255,46,.35);border-radius:100px;
+  background:rgba(7,8,13,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(182,255,46,.35);border-radius:100px;
   padding:9px 20px;font-size:.78rem;font-family:"Space Grotesk",sans-serif;font-weight:600;
   box-shadow:0 4px 24px -8px rgba(0,0,0,.7),0 0 0 1px rgba(182,255,46,.1);
   transition:transform .38s var(--spring-ease);max-width:88vw;overflow:hidden;text-overflow:ellipsis}
@@ -302,15 +305,15 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
 #vcanvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
 #vcanvas:active{cursor:grabbing}
 .vhint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);pointer-events:none;
-  background:rgba(8,20,14,.7);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:999px;
+  background:rgba(8,20,14,.7);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:999px;
   padding:6px 14px;font-size:.74rem;color:var(--ink-dim);transition:opacity .5s}
 /* building panel (bottom sheet) */
-.bsheet-scrim{position:fixed;inset:0;background:rgba(4,11,8,.55);backdrop-filter:blur(3px);z-index:50;opacity:0;pointer-events:none;transition:opacity .3s}
+.bsheet-scrim{position:fixed;inset:0;background:rgba(4,11,8,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);z-index:50;opacity:0;pointer-events:none;transition:opacity .3s}
 .bsheet-scrim.open{opacity:1;pointer-events:auto}
 .bsheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,105%);width:min(480px,100%);z-index:55;
   background:linear-gradient(180deg,var(--surface2),var(--bg));border:1px solid var(--line);border-bottom:none;
   border-radius:var(--r-lg) var(--r-lg) 0 0;padding:18px 20px calc(26px + env(safe-area-inset-bottom,0px));
-  box-shadow:var(--shadow);transition:transform .4s var(--spring-ease);max-height:82vh;overflow-y:auto}
+  box-shadow:var(--shadow);transition:transform .4s var(--spring-ease);max-height:82vh;overflow-y:auto;will-change:transform}
 .bsheet.open{transform:translate(-50%,0)}
 .bsheet .grab{width:42px;height:4px;border-radius:3px;background:var(--line);margin:0 auto 14px}
 .bsheet .bh{display:flex;align-items:center;gap:12px}
@@ -491,6 +494,21 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
 .forest canvas{position:absolute;inset:0;width:100%;height:100%}
 .pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
 @media(max-width:520px){.pillars{grid-template-columns:1fr}}
+
+/* ---- iOS: prevent auto-zoom on input focus (font-size must be >=16px) ---- */
+@media screen and (max-width:900px){
+  .field{font-size:1rem}
+}
+
+/* ---- short viewport / landscape iPad — shrink lock screen so all buttons visible ---- */
+@media(max-height:720px){
+  .lock-logo svg{width:48px;height:48px}
+  .lock-word{font-size:clamp(1.6rem,7vw,2.4rem)}
+  .lock-inner{gap:8px}
+  .lock-dots{margin:2px 0 4px}
+  .lock-pad{gap:8px}
+  .lock-pad button{font-size:1.1rem}
+}
 .pillar{padding:15px;border-radius:var(--r);background:linear-gradient(180deg,var(--surface2),var(--surface));
   border:1px solid var(--line);position:relative;overflow:hidden}
 .pillar::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pc)}
@@ -521,7 +539,7 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
 /* ---- LOCK SCREEN (soft gate) ---- */
 .lockscreen{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
   background:radial-gradient(circle at 50% 30%,rgba(35,247,221,.06),transparent 60%),var(--bg);
-  padding:24px;animation:viewIn .4s var(--ease)}
+  padding:24px;animation:viewIn .4s var(--ease);overflow-y:auto;overscroll-behavior:contain}
 .lock-inner{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:300px}
 .lock-logo svg{width:74px;height:74px;filter:drop-shadow(0 0 26px rgba(255,255,255,.25));animation:logoPulse 3s ease-in-out infinite}
 .lock-word{font-family:"Anton",sans-serif;font-size:clamp(2.4rem,12vw,3.4rem);line-height:.9;text-transform:uppercase;
@@ -537,7 +555,7 @@ textarea.field{min-height:120px;resize:vertical;line-height:1.55}
 .lock-pad button{aspect-ratio:1;border-radius:50%;border:1px solid var(--line);background:linear-gradient(180deg,var(--surface2),var(--surface));
   color:var(--ink);font-family:"Space Grotesk",sans-serif;font-size:1.5rem;font-weight:600;cursor:pointer;
   display:flex;align-items:center;justify-content:center;transition:all .12s var(--spring-ease);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 2px 8px -4px rgba(0,0,0,.6)}
+  touch-action:manipulation;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 2px 8px -4px rgba(0,0,0,.6)}
 .lock-pad button:active{transform:scale(.92);background:rgba(182,255,46,.12);border-color:var(--spring)}
 .lock-pad button.lk-ghost{font-size:1.1rem;color:var(--ink-dim);background:transparent;box-shadow:none}
 .lock-err{font-size:.78rem;color:var(--impact);height:18px;font-family:"Space Grotesk",sans-serif;font-weight:600;opacity:0;transition:opacity .2s}
